@@ -1,0 +1,9 @@
+{
+  "manifest_version": 2,
+  "name": "RemindMeow",
+  "version": "1.0",
+  "description": "Your favorite reminding and blocking tool!",
+  "icons": {"128": "icon-temp.png"},
+  "browser_action": {"default_popup": "popup.html"},
+  "permissions": ["activeTab"]
+}
