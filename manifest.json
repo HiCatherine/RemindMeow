@@ -4,6 +4,9 @@
   "version": "1.0",
   "description": "Your favorite reminding and blocking tool!",
   "icons": {"128": "icon-temp.png"},
-  "browser_action": {"default_popup": "popup.html"},
-  "permissions": ["activeTab"]
+  "browser_action": {
+    "default_title": "Nag me for these...",
+    "default_popup": "popup.html"},
+
+  "permissions": ["activeTab", "http://*/*", "https://*/*"]
 }
