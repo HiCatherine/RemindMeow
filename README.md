@@ -25,3 +25,14 @@ To-Do List
 - [ ] hardcore mode: block entire websites (consult StayFocused)
 - [ ] push to chrome extension store
 - [ ] pitch/presentation
+
+- Adjustable parameters:
+  - [ ] alarm intervals
+  - [ ] hardcore or softcore
+  - [ ] bedtime
+  - [ ] take a break
+  - [ ] eat healthy
+  - [ ] custom parameter
+  - [ ] icon selection
+
+
