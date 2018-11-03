@@ -1,12 +1,18 @@
 {
-  "manifest_version": 2,
   "name": "RemindMeow",
+  "manifest_version": 2,
   "version": "1.0",
   "description": "Your favorite reminding and blocking tool!",
-  "icons": {"128": "icon-temp.png"},
+  "icons": {
+    "128": "icon-temp.png"
+  },
   "browser_action": {
     "default_title": "Nag me for these...",
-    "default_popup": "popup.html"},
-
-  "permissions": ["activeTab", "http://*/*", "https://*/*"]
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": ["activeTab", "storage", "alarms", "http://*/*", "https://*/*"]
 }

@@ -1,23 +1,23 @@
-// Copyright 2018 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-'use strict';
-
-{
-    "name": "Getting Started Example",
-    "version": "1.0",
-    "description": "Build an Extension!",
-    "permissions": ["storage"],
-    "background": {
-      "scripts": ["background.js"],
-      "persistent": false
-    },
-    "manifest_version": 2
-}
-
 chrome.runtime.onInstalled.addListener(function() {
-  chrome.storage.sync.set({color: '#3aa757'}, function() {
-    console.log("The color is green.");
+  console.log("Yeet");
+  var value = 5;
+  chrome.storage.local.set({key: value}, function() {
+    console.log('Value is set to ' + value);
+  });
+
+  chrome.alarms.create("test", {
+    when: Date.now() + 3000
+  });
+
+  chrome.alarms.onAlarm.addListener((alarm) => {
+    if (alarm.name == "test") {
+      alert("Yeet");
+    }
+  });
+});
+
+chrome.runtime.onStartup.addListener(function() {
+  chrome.storage.local.get(['key'], function(result) {
+    console.log('Value currently is ' + result.key);
   });
 });
