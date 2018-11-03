@@ -12,8 +12,7 @@ Remind me to...\
 
 
 To-Do List
-- [ ] icon
-- [ ] name
+
 - [ ] familiarize with chrome extension development - go to https://developer.chrome.com/extensions/getstarted
 - [ ] drop-down window
 - [ ] website-blocking feature
