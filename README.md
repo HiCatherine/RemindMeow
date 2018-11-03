@@ -14,6 +14,7 @@ Remind me to...\
 To-Do List
 
 - [ ] familiarize with chrome extension development - go to https://developer.chrome.com/extensions/getstarted
+- [x] basic file initialization
 - [ ] name
 - [ ] icon
 - [ ] drop-down window
