@@ -8,12 +8,16 @@ Remind me to...\
   Go to bed\
   Drink water\
   Eat vegetables\
-  ...\
+  ...
 
 
 To-Do List
 - [ ] icon
 - [ ] name
-- [ ] familiarize with Brave API
+- [ ] familiarize with chrome extension development - go to https://developer.chrome.com/extensions/getstarted
+- [ ] drop-down window
 - [ ] website-blocking feature
 - [ ] webpage designs when blocked
+- [ ] setting's page for time, what you want to be reminded of (checkbox format, enter time intervals)
+- [ ] softcore mode: only send reminders, click ok or snooze (pop-ups)
+- [ ] hardcore mode: block entire websites (consult StayFocused)
