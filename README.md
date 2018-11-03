@@ -20,3 +20,4 @@ To-Do List
 - [ ] setting's page for time, what you want to be reminded of (checkbox format, enter time intervals)
 - [ ] softcore mode: only send reminders, click ok or snooze (pop-ups)
 - [ ] hardcore mode: block entire websites (consult StayFocused)
+- [ ] pitch/presentation
