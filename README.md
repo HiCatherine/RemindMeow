@@ -9,13 +9,11 @@ Remind me to...\
   Drink water\
   Eat vegetables\
   ...\
-  \
 
 
-To-Do List\
+To-Do List
 - [ ] icon
 - [ ] name
 - [ ] familiarize with Brave API
 - [ ] website-blocking feature
 - [ ] webpage designs when blocked
-- [ ]
