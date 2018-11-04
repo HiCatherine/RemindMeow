@@ -17,23 +17,24 @@
       a:hover {
         color: orange;
       }
-
+      .top-buffer { margin-top: 10px; }
+      .bottom-buffer { margin-bottom: 50px; }
     </style>
-    <title>RemindMeow Settings</title>
+    <title>RemindMeow</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
   <body>
-    <ul class="nav nav-pills" id="pills-tab" role="tablist" style="background-color: black">
+    <ul class="nav nav-pills pt-3 mb-5" id="pills-tab" role="tablist" style="background-color: black">
         <a class="navbar-brand p-3 mb-2 text-white"><h1>RemindMeow</h1></a>
         <li class="nav-item">
-          <a class="nav-link active" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab">Settings</a>
+          <a class="nav-link active pt-4" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab">Settings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pills-about-tab" data-toggle="pill" href="#pills-about" role="tab">About</a>
+          <a class="nav-link pt-4" id="pills-about-tab" data-toggle="pill" href="#pills-about" role="tab">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pills-donate-tab" data-toggle="pill" href="#pills-donate" role="tab">Donate</a>
+          <a class="nav-link pt-4" id="pills-donate-tab" data-toggle="pill" href="#pills-donate" role="tab">Donate</a>
         </li>
     </ul>
 
@@ -42,9 +43,10 @@
         <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
             <h3>
                 Options
+                <div class="row bottom-buffer"></div>
             </h3>
             <p>
-              RemindMeow will remind you to:
+              RemindMeow will remind you to...
             </p>
             <div class="option bedtime">
             <p id="bedtime" class="attention"></p>
@@ -134,7 +136,7 @@
                         <option value="am">AM</option>
                         <option value="pm">PM</option>
                     </select>
-                    <input type="button" value="Set" id="bedtime">
+                    <input type="button" value="Set" id="bedtime" onclick="setBedtime();">
                 </li>
             </ul>
         </div>
@@ -150,23 +152,23 @@
           </p>
           <div class="container">
             <div class="option takeBreak">
-          <p>
-            <input type="checkbox" id="determinationMode">&#160;
-            <font color="red">
-                Determination Mode (You cannot access any tabs during breaks!)
-              </font>
-          </p>
-        </div>
-      </div>
+              <p>
+                <input type="checkbox" id="determinationMode">&#160;
+                <font color="red">
+                    Determination Mode (You will be blocked from ALL websites during breaks!)
+                </font>
+              </p>
+            </div>
+          </div>
         </div>
 
         <div class="option drinkWater">
-        <p>
-            <input type="checkbox" id="drinkWater">&#160;
-            drink water, every
-            <input type="text" id="breakFrequency" style="width: 50px" value="60" /> minutes
-        </p>
-      </div>
+          <p>
+              <input type="checkbox" id="drinkWater">&#160;
+              drink water, every
+              <input type="text" id="breakFrequency" style="width: 50px" value="60" /> minutes
+          </p>
+        </div>
       </div>
 
         <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
@@ -177,7 +179,7 @@
                   About Us
               </h3>
               <p>
-                RemindMeow is a Brave Extension developed by Catherine Hu, Christopher Liu, Eric Li, and Sophie Wen at Cal Hacks 5.0.
+                RemindMeow is an browser extension developed by Catherine Hu, Christopher Liu, Eric Li, and Sophie Wen @UC Berkely to help computer-users' develop healthier habits for using technologies.
               </p>
             </div>
           </div>
