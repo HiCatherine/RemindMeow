@@ -7,6 +7,7 @@
     <script src="./options.js"></script>
     <link rel="stylesheet" href="./bootstrap.min.css">
     <link rel="stylesheet" href="./options.css">
+    <link rel="stylesheet" href="./popup.css">
     <style>
       .nav-link.active {
         background-color: orange !important;
@@ -43,11 +44,11 @@
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
             <h3>
-                Options
+                Settings
                 <div class="row bottom-buffer"></div>
             </h3>
             <p>
-              RemindMeow will remind you to...
+              RemindMeow will remind you to:
             </p>
             <div class="option bedtime">
             <p id="bedtime" class="attention"></p>
@@ -142,6 +143,15 @@
             </ul>
         </div>
 
+        
+        <div class="option drinkWater">
+          <p>
+              <input type="checkbox" id="drinkWater">&#160;
+              drink water, every
+              <input type="text" id="breakFrequency" style="width: 50px" value="60" /> minutes
+          </p>
+        </div>
+
         <div class="option takeBreak">
           <p>
               <input type="checkbox" id="takeBreak" onclick="takeBreak()">&#160;
@@ -151,26 +161,21 @@
               <input type="text" id="breakTime" style="width: 50px" value="5"/> minutes each
               <input id="saveBreakData" type="button" name="saveBreak" value="Save" onclick="SetbreakProperties()">
           </p>
-          <div class="container">
-            <div class="option takeBreak">
-              <p>
-                <input type="checkbox" id="determinationMode" onclick="determinationMode()">&#160;
-                <font color="red">
-                    Determination Mode (You will be blocked from ALL websites during breaks!)
-                </font>
-              </p>
-            </div>
-          </div>
         </div>
-
-        <div class="option drinkWater">
-          <p>
-              <input type="checkbox" id="drinkWater">&#160;
-              drink water, every
-              <input type="text" id="breakFrequency" style="width: 50px" value="60" /> minutes
-          </p>
+       
+        <div class="determination">
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label> <b>Determination Mode (Break-Taking ONLY)</b>
+          <p> <font color="red">
+              -> You will be blocked from ALL websites during breaks!)
+              </font>
+          </p>        
+          <button id="submit">Submit</button>
         </div>
       </div>
+      <input id="saveOptions" type="button" name="saveOptions" value="Save" onclick="setOptions();">
 
         <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
         <div class="container">
@@ -180,13 +185,12 @@
                   About Us
               </h3>
               <p>
-                RemindMeow is a browser extension developed by Catherine Hu, Christopher Liu, Eric Li, and Sophie Wen @UC Berkely to help users develop healthier habits for using technologies.
+              RemindMeow is a browser extension developed by Catherine Hu, Christopher Liu, Eric Li, and Sophie Wen @ UC Berkeley to help computer users develop healthier habits while using technology.
               </p>
             </div>
           </div>
         </div>
       </div>
-
         <div class="tab-pane fade" id="pills-donate" role="tabpanel" aria-labelledby="pills-donate-tab">We don't need donations just yet!</div>
       </div>
     </div>
