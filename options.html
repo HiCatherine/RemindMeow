@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      .black .active a,
-      .black .active a:hover {
-        background-color: black;
-      }
-    </style>
     <script src="./jquery-3.3.1.min.js"></script>
     <script src="./popper.min.js"></script>
     <script src="./bootstrap.min.js"></script>
     <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./options.css">
+    <style>
+      .nav-link.active {
+        background-color: orange !important;
+        color: white;
+      }
+      .nav-link {
+        color: white;
+      }
+      a:hover {
+        color: orange;
+      }
+
+    </style>
     <title>RemindMeow Settings</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
   <body>
-    <ul class="nav nav-pills black">
-        <li class="active"><a href="#tab1" data-toggle="tab">Overview</a></li>
-        <li><a href="#tab2" data-toggle="tab">Sample</a></li>
-        <li><a href="#tab3" data-toggle="tab">Sample</a></li>
-    </ul>
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <a class="navbar-brand p-3 mb-2 bg-dark text-white">RemindMeow</a>
+    <ul class="nav nav-pills" id="pills-tab" role="tablist" style="background-color: black">
+        <a class="navbar-brand p-3 mb-2 text-white"><h1>RemindMeow</h1></a>
         <li class="nav-item">
           <a class="nav-link active" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab">Settings</a>
         </li>
