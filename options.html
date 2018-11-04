@@ -4,6 +4,7 @@
     <script src="./jquery-3.3.1.min.js"></script>
     <script src="./popper.min.js"></script>
     <script src="./bootstrap.min.js"></script>
+    <script src="./options.js"></script>
     <link rel="stylesheet" href="./bootstrap.min.css">
     <link rel="stylesheet" href="./options.css">
     <link rel="stylesheet" href="./popup.css">
@@ -46,7 +47,7 @@
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
             <h3>
-                Options
+                Settings
                 <div class="row bottom-buffer"></div>
             </h3>
             <p>
@@ -55,7 +56,7 @@
             <div class="option bedtime">
             <p id="bedtime" class="attention"></p>
             <p>
-                <input type="checkbox" id="remindSleep">&#160;
+                <input type="checkbox" id="remindSleep" onclick="remindSleep()">&#160;
                 go to sleep, at
             </p>
             <ul class="bedtime">
@@ -140,20 +141,12 @@
                         <option value="am">AM</option>
                         <option value="pm">PM</option>
                     </select>
+                    <input type="button" value="Set" id="bedtime" onclick="setBedtime()">
                 </li>
             </ul>
         </div>
 
-        <div class="option takeBreak">
-          <p>
-              <input type="checkbox" id="takeBreak">&#160;
-              take a break, every
-              <input type="text" id="breakFrequency" style="width: 50px" value="120" /> minutes
-              for
-              <input type="text" id="breakFrequency" style="width: 50px" value="5" /> minutes each
-          </p>
-        </div>
-
+        
         <div class="option drinkWater">
           <p>
               <input type="checkbox" id="drinkWater">&#160;
@@ -162,18 +155,30 @@
           </p>
         </div>
 
+        <div class="option takeBreak">
+          <p>
+              <input type="checkbox" id="takeBreak" onclick="takeBreak()">&#160;
+              take a break, every
+              <input type="text" id="breakFrequency" style="width: 50px" value="120"/> minutes
+              for
+              <input type="text" id="breakTime" style="width: 50px" value="5"/> minutes each
+              <input id="saveBreakData" type="button" name="saveBreak" value="Save" onclick="SetbreakProperties()">
+          </p>
+        </div>
+       
         <div class="determination">
           <label class="switch">
             <input type="checkbox">
             <span class="slider round"></span>
-          </label> <b>Determination Mode</b>
-          <p> In determination mode, you will be blocked from ALL websites during break and offline hours.</p>
-
+          </label> <b>Determination Mode (Break-Taking ONLY)</b>
+          <p> <font color="red">
+              -> You will be blocked from ALL websites during breaks!)
+              </font>
+          </p>        
+          <button id="submit">Submit</button>
         </div>
-
-        <input id="saveOptions" type="button" name="saveOptions" value="Save" onclick="setOptions();">
-
       </div>
+      <input id="saveOptions" type="button" name="saveOptions" value="Save" onclick="setOptions();">
 
         <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
         <div class="container">
@@ -183,13 +188,12 @@
                   About Us
               </h3>
               <p>
-                RemindMeow is a browser extension developed by Catherine Hu, Christopher Liu, Eric Li, and Sophie Wen @ UC Berkeley to help computer users develop healthier habits while using technology.
+              RemindMeow is a browser extension developed by Catherine Hu, Christopher Liu, Eric Li, and Sophie Wen @ UC Berkeley to help computer users develop healthier habits while using technology.
               </p>
             </div>
           </div>
         </div>
       </div>
-
         <div class="tab-pane fade" id="pills-donate" role="tabpanel" aria-labelledby="pills-donate-tab">We don't need donations just yet!</div>
       </div>
     </div>
