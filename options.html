@@ -6,6 +6,7 @@
     <script src="./bootstrap.min.js"></script>
     <link rel="stylesheet" href="./bootstrap.min.css">
     <link rel="stylesheet" href="./options.css">
+    <link rel="stylesheet" href="./popup.css">
     <style>
       .nav-link.active {
         background-color: orange !important;
@@ -46,7 +47,7 @@
                 <div class="row bottom-buffer"></div>
             </h3>
             <p>
-              RemindMeow will remind you to...
+              RemindMeow will remind you to:
             </p>
             <div class="option bedtime">
             <p id="bedtime" class="attention"></p>
@@ -136,7 +137,6 @@
                         <option value="am">AM</option>
                         <option value="pm">PM</option>
                     </select>
-                    <input type="button" value="Set" id="bedtime" onclick="setBedtime();">
                 </li>
             </ul>
         </div>
@@ -148,18 +148,7 @@
               <input type="text" id="breakFrequency" style="width: 50px" value="120" /> minutes
               for
               <input type="text" id="breakFrequency" style="width: 50px" value="5" /> minutes each
-              <input id="saveBreakData" type="button" name="saveBreak" value="Save">
           </p>
-          <div class="container">
-            <div class="option takeBreak">
-              <p>
-                <input type="checkbox" id="determinationMode">&#160;
-                <font color="red">
-                    Determination Mode (You will be blocked from ALL websites during breaks!)
-                </font>
-              </p>
-            </div>
-          </div>
         </div>
 
         <div class="option drinkWater">
@@ -169,6 +158,18 @@
               <input type="text" id="breakFrequency" style="width: 50px" value="60" /> minutes
           </p>
         </div>
+
+        <div class="determination">
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label> <b>Determination Mode</b>
+          <p> In determination mode, you will be blocked from ALL websites during break and offline hours.</p>
+
+        </div>
+
+        <input id="saveOptions" type="button" name="saveOptions" value="Save" onclick="setOptions();">
+
       </div>
 
         <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
@@ -179,7 +180,7 @@
                   About Us
               </h3>
               <p>
-                RemindMeow is an browser extension developed by Catherine Hu, Christopher Liu, Eric Li, and Sophie Wen @UC Berkely to help computer-users' develop healthier habits for using technologies.
+                RemindMeow is a browser extension developed by Catherine Hu, Christopher Liu, Eric Li, and Sophie Wen @ UC Berkeley to help computer users develop healthier habits while using technology.
               </p>
             </div>
           </div>
