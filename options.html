@@ -4,6 +4,7 @@
     <script src="./jquery-3.3.1.min.js"></script>
     <script src="./popper.min.js"></script>
     <script src="./bootstrap.min.js"></script>
+    <script src="./options.js"></script>
     <link rel="stylesheet" href="./bootstrap.min.css">
     <link rel="stylesheet" href="./options.css">
     <style>
@@ -51,7 +52,7 @@
             <div class="option bedtime">
             <p id="bedtime" class="attention"></p>
             <p>
-                <input type="checkbox" id="remindSleep">&#160;
+                <input type="checkbox" id="remindSleep" onclick="remindSleep()">&#160;
                 go to sleep, at
             </p>
             <ul class="bedtime">
@@ -136,24 +137,24 @@
                         <option value="am">AM</option>
                         <option value="pm">PM</option>
                     </select>
-                    <input type="button" value="Set" id="bedtime" onclick="setBedtime();">
+                    <input type="button" value="Set" id="bedtime" onclick="setBedtime()">
                 </li>
             </ul>
         </div>
 
         <div class="option takeBreak">
           <p>
-              <input type="checkbox" id="takeBreak">&#160;
+              <input type="checkbox" id="takeBreak" onclick="takeBreak()">&#160;
               take a break, every
-              <input type="text" id="breakFrequency" style="width: 50px" value="120" /> minutes
+              <input type="text" id="breakFrequency" style="width: 50px" value="120"/> minutes
               for
-              <input type="text" id="breakFrequency" style="width: 50px" value="5" /> minutes each
-              <input id="saveBreakData" type="button" name="saveBreak" value="Save">
+              <input type="text" id="breakTime" style="width: 50px" value="5"/> minutes each
+              <input id="saveBreakData" type="button" name="saveBreak" value="Save" onclick="SetbreakProperties()">
           </p>
           <div class="container">
             <div class="option takeBreak">
               <p>
-                <input type="checkbox" id="determinationMode">&#160;
+                <input type="checkbox" id="determinationMode" onclick="determinationMode()">&#160;
                 <font color="red">
                     Determination Mode (You will be blocked from ALL websites during breaks!)
                 </font>
@@ -179,7 +180,7 @@
                   About Us
               </h3>
               <p>
-                RemindMeow is an browser extension developed by Catherine Hu, Christopher Liu, Eric Li, and Sophie Wen @UC Berkely to help computer-users' develop healthier habits for using technologies.
+                RemindMeow is a browser extension developed by Catherine Hu, Christopher Liu, Eric Li, and Sophie Wen @UC Berkely to help users develop healthier habits for using technologies.
               </p>
             </div>
           </div>
