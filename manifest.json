@@ -14,5 +14,5 @@
     "scripts": ["background.js"],
     "persistent": false
   },
-  "permissions": ["activeTab", "storage", "alarms", "http://*/*", "https://*/*"]
+  "permissions": ["<all_urls>", "storage", "alarms"]
 }
