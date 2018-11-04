@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+      .black .active a,
+      .black .active a:hover {
+        background-color: black;
+      }
+    </style>
     <script src="./jquery-3.3.1.min.js"></script>
     <script src="./popper.min.js"></script>
     <script src="./bootstrap.min.js"></script>
@@ -10,22 +16,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
   <body>
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          <a class="navbar-brand">RemindMeow</a>
-          <li class="nav-item">
-            <a class="nav-link active" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab">settings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-about-tab" data-toggle="pill" href="#pills-about" role="tab">about</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-donate-tab" data-toggle="pill" href="#pills-donate" role="tab">donate</a>
-          </li>
-      </ul>
-        <div class="tab-content" id="pills-tabContent">
-          <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">Settings</div>
-          <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">About</div>
-          <div class="tab-pane fade" id="pills-donate" role="tabpanel" aria-labelledby="pills-donate-tab">Donate</div>
-        </div>
+    <ul class="nav nav-pills black">
+        <li class="active"><a href="#tab1" data-toggle="tab">Overview</a></li>
+        <li><a href="#tab2" data-toggle="tab">Sample</a></li>
+        <li><a href="#tab3" data-toggle="tab">Sample</a></li>
+    </ul>
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <a class="navbar-brand p-3 mb-2 bg-dark text-white">RemindMeow</a>
+        <li class="nav-item">
+          <a class="nav-link active" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab">Settings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-about-tab" data-toggle="pill" href="#pills-about" role="tab">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-donate-tab" data-toggle="pill" href="#pills-donate" role="tab">Donate</a>
+        </li>
+    </ul>
+    <div class="container">
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">Settings</div>
+        <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">About</div>
+        <div class="tab-pane fade" id="pills-donate" role="tabpanel" aria-labelledby="pills-donate-tab">We don't need donation just yet!</div>
+      </div>
+    </div>
   </body>
 </html>
