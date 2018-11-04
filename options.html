@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      .black .active a,
-      .black .active a:hover {
-        background-color: black;
-      }
-    </style>
     <script src="./jquery-3.3.1.min.js"></script>
     <script src="./popper.min.js"></script>
     <script src="./bootstrap.min.js"></script>
     <link rel="stylesheet" href="./bootstrap.min.css">
-    <title>RemindMeow Settings</title>
+    <link rel="stylesheet" href="./options.css">
+    <link rel="stylesheet" href="./popup.css">
+    <style>
+      .nav-link.active {
+        background-color: orange !important;
+        color: white;
+      }
+      .nav-link {
+        color: white;
+      }
+      a:hover {
+        color: orange;
+      }
+      .top-buffer { margin-top: 10px; }
+      .bottom-buffer { margin-bottom: 50px; }
+      ul {
+        list-style-type:none;
+      }
+    </style>
+    <title>RemindMeow</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
   <body>
-    <ul class="nav nav-pills black">
-        <li class="active"><a href="#tab1" data-toggle="tab">Overview</a></li>
-        <li><a href="#tab2" data-toggle="tab">Sample</a></li>
-        <li><a href="#tab3" data-toggle="tab">Sample</a></li>
-    </ul>
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <a class="navbar-brand p-3 mb-2 bg-dark text-white">RemindMeow</a>
+    <ul class="nav nav-pills pt-3 mb-5" id="pills-tab" role="tablist" style="background-color: black">
+        <a class="navbar-brand p-3 mb-2 text-white"><h1>RemindMeow</h1></a>
         <li class="nav-item">
-          <a class="nav-link active" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab">Settings</a>
+          <a class="nav-link active pt-4" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab">Settings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pills-about-tab" data-toggle="pill" href="#pills-about" role="tab">About</a>
+          <a class="nav-link pt-4" id="pills-about-tab" data-toggle="pill" href="#pills-about" role="tab">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pills-donate-tab" data-toggle="pill" href="#pills-donate" role="tab">Donate</a>
+          <a class="nav-link pt-4" id="pills-donate-tab" data-toggle="pill" href="#pills-donate" role="tab">Donate</a>
         </li>
     </ul>
+
     <div class="container">
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
-          <li class="option bedtime">
             <h3>
                 Options
+                <div class="row bottom-buffer"></div>
             </h3>
             <p>
               RemindMeow will remind you to:
             </p>
+            <div class="option bedtime">
             <p id="bedtime" class="attention"></p>
             <p>
                 <input type="checkbox" id="remindSleep">&#160;
@@ -130,37 +140,58 @@
                         <option value="am">AM</option>
                         <option value="pm">PM</option>
                     </select>
-                    <input type="button" value="Set" id="bedtime">
                 </li>
             </ul>
-        </li></div>
-        <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">About</div>
-        <div class="tab-pane fade" id="pills-donate" role="tabpanel" aria-labelledby="pills-donate-tab">We don't need donation just yet!</div>
-      </div>
-    </div>
-    
+        </div>
 
-        <li class="option takeBreak">
+        <div class="option takeBreak">
           <p>
               <input type="checkbox" id="takeBreak">&#160;
               take a break, every
               <input type="text" id="breakFrequency" style="width: 50px" value="120" /> minutes
               for
               <input type="text" id="breakFrequency" style="width: 50px" value="5" /> minutes each
-              <input id="saveBreakData" type="button" name="saveBreak" value="Save">
           </p>
-          <p>
-            <input type="checkbox" id="determinationMode">&#160;
-                Determination Mode (You cannot access any tabs during breaks!)
-          </p>
-        </li>
+        </div>
 
-        <li class="option drinkWater">
-        <p>
-            <input type="checkbox" id="drinkWater">&#160;
-            drink water, every
-            <input type="text" id="breakFrequency" style="width: 50px" value="60" /> minutes
-        </p>
-      </li>
+        <div class="option drinkWater">
+          <p>
+              <input type="checkbox" id="drinkWater">&#160;
+              drink water, every
+              <input type="text" id="breakFrequency" style="width: 50px" value="60" /> minutes
+          </p>
+        </div>
+
+        <div class="determination">
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label> <b>Determination Mode</b>
+          <p> In determination mode, you will be blocked from ALL websites during break and offline hours.</p>
+
+        </div>
+
+        <input id="saveOptions" type="button" name="saveOptions" value="Save" onclick="setOptions();">
+
+      </div>
+
+        <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
+        <div class="container">
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="pills-about-tab">
+              <h3>
+                  About Us
+              </h3>
+              <p>
+                RemindMeow is a browser extension developed by Catherine Hu, Christopher Liu, Eric Li, and Sophie Wen @ UC Berkeley to help computer users develop healthier habits while using technology.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="tab-pane fade" id="pills-donate" role="tabpanel" aria-labelledby="pills-donate-tab">We don't need donations just yet!</div>
+      </div>
+    </div>
   </body>
 </html>
