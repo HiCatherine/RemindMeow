@@ -13,9 +13,15 @@ var blocked = `
   }
 </style>
 <div class="banner">
-  <h5>YEET</h5></div>
+  <h5>Stand up and stretch! Meow!</h5></div>
 
 `;
 
-$("body").empty();
-$("body").append(blocked);
+var local = chrome.storage.local;
+
+local.get('blocking', (data) => {
+  if (data["blocking"]) {
+    $("body").empty();
+    $("body").append(blocked);
+  }
+})

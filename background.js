@@ -8,13 +8,21 @@ var local = chrome.storage.local;
 const alarms = ['break_alarm', 'water_alarm'];
 const default_options = {
   hardcore: false,
-  break_alarm: 1,
-  break_number: 0,
-  water_alarm: 2,
-  water_number: 0,
 
+  break_enabled: true,
+  break_time: 1,
+  break_length: 1,
+  break_number: 1,
+
+  water_enabled: true,
+  water_time: 2,
+  water_number: 1,
+
+  bedtime_enabled: true,
   bed_hour: 3,
   bed_minute: 9,
+
+  blocking: false,
 }
 
 function doIfRunning(callback) {
@@ -25,6 +33,68 @@ function doIfRunning(callback) {
   });
 }
 
+function setBlocking(blocking) {
+  local.set({ blocking: blocking });
+}
+
+function setHardcore(hardcore) {
+  local.set({ hardcore: hardcore });
+}
+
+function setBreakAlarm() {
+  local.get(['break_enabled', 'break_time', 'break_length'], (data) => {
+    if (data["break_enabled"]) {
+      chrome.alarms.create("break_alarm", { when: Date.now() + 60 * 1000 * data["break_time"] });
+    }
+  });
+}
+
+function setBreakTime(minutes, length) {
+  console.log(minutes);
+  console.log(length);
+  local.set({ break_time: minutes, break_length: length }, () => {
+    setBreakAlarm();
+  })
+}
+
+function enableBreakAlarm() {
+  local.set({ break_enabled: true }, () => {
+    setBedtimeAlarm();
+  });
+}
+
+function disableBreakAlarm() {
+  local.set({ break_enabled: false }, () => {
+    chrome.alarms.clear("break_alarm");
+  });
+}
+
+function setWaterTime(minutes) {
+  local.set({ water_time: minutes }, () => {
+    setWaterAlarm();
+  })
+}
+
+function setWaterAlarm() {
+  local.get(['water_enabled', 'water_time'], (data) => {
+    if (data["water_enabled"]) {
+        chrome.alarms.create("water_alarm", { when: Date.now() + 60 * 1000 * data["water_time"] });
+    }
+  });
+}
+
+function enableWaterAlarm() {
+  local.set({ water_enable: true }, () => {
+    setWaterAlarm();
+  });
+}
+
+function disableWaterAlarm() {
+  local.set({ water_enable: false }, () => {
+    chrome.alarms.clear("water_alarm");
+  });
+}
+
 function startRelativeAlarms() {
   savedAlarms = [];
 
@@ -32,48 +102,76 @@ function startRelativeAlarms() {
     if (alarm.name == "break_alarm") {
       local.get('break_number', (data) => {
         /*new Notification("Walk around!", {
-          icon: 'icon-temp.png',
+          icon: 'cat-icon.png',
           body: 'This is walk break #' + data["break_number"],
         });*/
-        chrome.notifications.create({
-          type: 'basic',
-          title: "Walk around!",
-          iconUrl: 'icon-temp.png',
-          message: 'This is walk break #' + data["break_number"],
-        });
 
-        local.set({ break_number: data["break_number"] + 1 }, () => {
-          local.get('break_alarm', (data) => {
-            chrome.alarms.create("break_alarm", { when: Date.now() + 60 * 1000 * data["break_alarm"] });
+        local.get('hardcore', (h) => {
+          if (h["hardcore"]) {
+            chrome.notifications.create({
+              type: 'basic',
+              title: "Walk around!",
+              iconUrl: 'cat-icon.png',
+              message: 'HARDCORE MODE. ALL SITES ARE BLOCKED.',
+            });
+
+
+            setBlocking(true);
+          } else {
+            chrome.notifications.create({
+              type: 'basic',
+              title: "Walk around!",
+              iconUrl: 'cat-icon.png',
+              message: 'This is walk break #' + data["break_number"],
+            });
+          }
+
+          local.set({ break_number: data["break_number"] + 1 }, () => {
+            local.get(['break_time', 'break_length'], (data) => {
+              if (h["hardcore"]) {
+                setTimeout(() => {
+                  setBlocking(false);
+                  chrome.notifications.create({
+                    type: 'basic',
+                    title: 'Your break is over!',
+                    iconUrl: 'cat-icon.png',
+                    message: 'You can visit any site now.',
+                  });
+                }, 60 * 1000 * data["break_length"]);
+              }
+              chrome.alarms.create("break_alarm", { when: Date.now() + 60 * 1000 * (data["break_time"] + data["break_length"]) });
+            });
           });
         });
       });
     } else if (alarm.name == "water_alarm") {
       local.get('water_number', (data) => {
         /*new Notification("Drink water!", {
-          icon: 'icon-temp.png',
+          icon: 'cat-icon.png',
           body: 'This is water break #' + data["water_number"],
         });*/
         chrome.notifications.create({
           type: 'basic',
           title: "Drink water!",
-          iconUrl: "icon-temp.png",
+          iconUrl: "cat-icon.png",
           message: 'This is water break #' + data["water_number"],
         });
 
         local.set({ water_number: data["water_number"] + 1 }, () => {
-          local.get('water_alarm', (data) => {
-            chrome.alarms.create("water_alarm", { when: Date.now() + 60 * 1000 * data["water_alarm"] });
+          local.get('water_time', (data) => {
+            chrome.alarms.create("water_alarm", { when: Date.now() + 60 * 1000 * data["water_time"] });
           });
         });
       })
     }
   });
 
-  local.get(['break_alarm', 'water_alarm'], (data) => {
+  setBreakAlarm();
+  setWaterAlarm();
+  /*local.get(['break_alarm', 'water_alarm'], (data) => {
     chrome.alarms.create("break_alarm", { when: Date.now() + 60 * 1000 * data["break_alarm"] });
     chrome.alarms.create("water_alarm", { when: Date.now() + 60 * 1000 * data["water_alarm"] + 2000 });
-  });
+  });*/
 }
 
 function nextDate(hour, minute) {
@@ -87,8 +185,22 @@ function nextDate(hour, minute) {
 }
 
 function setBedtimeAlarm() {
-  local.get(['bed_hour', 'bed_minute'], (data) => {
-    chrome.alarms.create("bedtime_alarm", { when: nextDate(data["bed_hour"], data["bed_minute"]).getTime() });
+  local.get(['bedtime_enabled', 'bed_hour', 'bed_minute'], (data) => {
+    if (data["bedtime_enabled"]) {
+      chrome.alarms.create("bedtime_alarm", { when: nextDate(data["bed_hour"], data["bed_minute"]).getTime() });
+    }
+  });
+}
+
+function enableBedtimeAlarm() {
+  local.set({ bedtime_enabled: true }, () => {
+    setBedtimeAlarm();
+  });
+}
+
+function disableBedtimeAlarm() {
+  local.set({ bedtime_enabled: false }, () => {
+    chrome.alarms.clear("bedtime_alarm");
   });
 }
 
@@ -98,7 +210,7 @@ function startAbsoluteAlarms() {
       chrome.notifications.create({
         type: 'basic',
         title: "Time to go to bed!",
-        iconUrl: "icon-temp.png",
+        iconUrl: "cat-icon.png",
         message: "Sleep well!",
       });
 
@@ -109,9 +221,11 @@ function startAbsoluteAlarms() {
   setBedtimeAlarm();
 }
 
-chrome.runtime.onMessage.addListener((message, sender, respond) => {
-
-});
+function setBedtime(hour, minute) {
+  local.set({ bed_hour: hour, bed_minute: minute }, () => {
+    setBedtimeAlarm();
+  })
+}
 
 function install() {
   local.set(default_options, () => {

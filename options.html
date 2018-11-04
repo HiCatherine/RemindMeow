@@ -6,7 +6,6 @@
     <script src="./bootstrap.min.js"></script>
     <script src="./options.js"></script>
     <link rel="stylesheet" href="./bootstrap.min.css">
-    <link rel="stylesheet" href="./options.css">
     <link rel="stylesheet" href="./popup.css">
     <style>
       .nav-link.active {
@@ -54,13 +53,12 @@
               RemindMeow will remind you to:
             </p>
             <div class="option bedtime">
-            <p id="bedtime" class="attention"></p>
             <p>
-                <input type="checkbox" id="remindSleep" onclick="remindSleep()">&#160;
+                <input type="checkbox" id="remindSleep">&#160;
                 go to sleep, at
             </p>
             <ul class="bedtime">
-                <select class="hour">
+                <select class="hour" id="bedtime_hour">
                     <option value="00">12</option>
                     <option value="01">01</option>
                     <option value="02">02</option>
@@ -75,7 +73,7 @@
                     <option value="11">11</option>
                 </select>
                 <span class="colon">:</span>
-                <select class="min">
+                <select class="min" id="bedtime_minute">
                     <option value="00">00</option>
                     <option value="01">01</option>
                     <option value="02">02</option>
@@ -137,49 +135,49 @@
                     <option value="58">58</option>
                     <option value="59">59</option>
                     </select>
-                    <select class="ampm">
+                    <select class="ampm" id="bedtime_ampm">
                         <option value="am">AM</option>
                         <option value="pm">PM</option>
                     </select>
-                    <input type="button" value="Set" id="bedtime" onclick="setBedtime()">
+                    <input type="button" value="Set" id="bedtime">
                 </li>
             </ul>
         </div>
 
-        
+
         <div class="option drinkWater">
           <p>
               <input type="checkbox" id="drinkWater">&#160;
               drink water, every
-              <input type="text" id="breakFrequency" style="width: 50px" value="60" /> minutes
+              <input type="text" id="waterFrequency" style="width: 50px" value="60" /> minutes
+              <input id="saveDrinkData" type="button" name="saveDrink" value="Save">
           </p>
         </div>
 
         <div class="option takeBreak">
           <p>
-              <input type="checkbox" id="takeBreak" onclick="takeBreak()">&#160;
+              <input type="checkbox" id="takeBreak">&#160;
               take a break, every
               <input type="text" id="breakFrequency" style="width: 50px" value="120"/> minutes
               for
-              <input type="text" id="breakTime" style="width: 50px" value="5"/> minutes each
-              <input id="saveBreakData" type="button" name="saveBreak" value="Save" onclick="SetbreakProperties()">
+              <input type="text" id="breakLength" style="width: 50px" value="5"/> minutes each
+              <input id="saveBreakData" type="button" name="saveBreak" value="Save">
           </p>
         </div>
-       
+
         <div class="determination">
           <label class="switch">
-            <input type="checkbox">
+            <input type="checkbox" id="hardcore">
             <span class="slider round"></span>
           </label> <b>Determination Mode (Break-Taking ONLY)</b>
-          <input id="saveOptions" type="button" name="saveOptions" value="Save" onclick="setOptions();"> 
           <p> <font color="red">
-              -> You will be blocked from ALL websites during breaks!)
+              -> You will be blocked from ALL websites during breaks!
               </font>
-          </p> 
-                
+          </p>
+
         </div>
       </div>
-      
+
         <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
         <div class="container">
           <div class="tab-content" id="pills-tabContent">
