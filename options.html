@@ -30,13 +30,13 @@
     <ul class="nav nav-pills pt-3 mb-5" id="pills-tab" role="tablist" style="background-color: black">
         <a class="navbar-brand p-3 mb-2 text-white"><h1>RemindMeow</h1></a>
         <li class="nav-item">
-          <a class="nav-link active pt-4" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab">Settings</a>
+          <a class="nav-link active mt-4" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab">Settings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link pt-4" id="pills-about-tab" data-toggle="pill" href="#pills-about" role="tab">About</a>
+          <a class="nav-link mt-4" id="pills-about-tab" data-toggle="pill" href="#pills-about" role="tab">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link pt-4" id="pills-donate-tab" data-toggle="pill" href="#pills-donate" role="tab">Donate</a>
+          <a class="nav-link mt-4" id="pills-donate-tab" data-toggle="pill" href="#pills-donate" role="tab">Donate</a>
         </li>
     </ul>
 
@@ -168,21 +168,22 @@
             <input type="checkbox">
             <span class="slider round"></span>
           </label> <b>Determination Mode (Break-Taking ONLY)</b>
+          <input id="saveOptions" type="button" name="saveOptions" value="Save" onclick="setOptions();"> 
           <p> <font color="red">
               -> You will be blocked from ALL websites during breaks!)
               </font>
-          </p>        
-          <button id="submit">Submit</button>
+          </p> 
+                
         </div>
       </div>
-      <input id="saveOptions" type="button" name="saveOptions" value="Save" onclick="setOptions();">
-
+      
         <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
         <div class="container">
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="pills-about-tab">
               <h3>
                   About Us
+                  <div class="row bottom-buffer"></div>
               </h3>
               <p>
               RemindMeow is a browser extension developed by Catherine Hu, Christopher Liu, Eric Li, and Sophie Wen @ UC Berkeley to help computer users develop healthier habits while using technology.
@@ -191,7 +192,8 @@
           </div>
         </div>
       </div>
-        <div class="tab-pane fade" id="pills-donate" role="tabpanel" aria-labelledby="pills-donate-tab">We don't need donations just yet!</div>
+        <div class="tab-pane fade" id="pills-donate" role="tabpanel" aria-labelledby="pills-donate-tab" > <div class="row bottom-buffer"></div>
+        Please donate a Cal Hacks prize to us ;) </div>
       </div>
     </div>
   </body>
