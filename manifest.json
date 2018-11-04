@@ -15,5 +15,10 @@
     "persistent": false
   },
   "options_page": "options.html",
-  "permissions": ["activeTab", "storage", "alarms", "notifications", "http://*/*", "https://*/*"]
+  "permissions": ["activeTab", "storage", "alarms", "notifications", "webRequestBlocking",
+     "webRequest",
+     "activeTab",
+     "tabs",
+     "http://*/*",
+     "https://*/*"]
 }

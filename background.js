@@ -16,9 +16,6 @@ function install() {
     console.log("Stored initial options.");
   });
 
-
-
-
   chrome.alarms.create("test", {
     when: Date.now() + 3000
   });
@@ -35,6 +32,21 @@ function install() {
       });
     }
   });
+
+  console.log("Loaded extension");
+
+
+function blockRequest(details) {
+   return {cancel: true};
+}
+
+function updateFilters(urls) {
+   if(chrome.webRequest.onBeforeRequest.hasListener(blockRequest))
+     chrome.webRequest.onBeforeRequest.removeListener(blockRequest);
+   chrome.webRequest.onBeforeRequest.addListener(blockRequest, {urls: ["*://*.facebook.com/*", "*://*.facebook.net/*"]}, ['blocking']);
+}
+
+updateFilters();
 }
 
 chrome.runtime.onInstalled.addListener(function() {
