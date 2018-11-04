@@ -33,16 +33,17 @@
           <a class="nav-link" id="pills-donate-tab" data-toggle="pill" href="#pills-donate" role="tab">Donate</a>
         </li>
     </ul>
+
     <div class="container">
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
-          <li class="option bedtime">
             <h3>
                 Options
             </h3>
             <p>
               RemindMeow will remind you to:
             </p>
+            <div class="option bedtime">
             <p id="bedtime" class="attention"></p>
             <p>
                 <input type="checkbox" id="remindSleep">&#160;
@@ -133,14 +134,9 @@
                     <input type="button" value="Set" id="bedtime">
                 </li>
             </ul>
-        </li></div>
-        <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">About</div>
-        <div class="tab-pane fade" id="pills-donate" role="tabpanel" aria-labelledby="pills-donate-tab">We don't need donation just yet!</div>
-      </div>
-    </div>
-    
+        </div>
 
-        <li class="option takeBreak">
+        <div class="option takeBreak">
           <p>
               <input type="checkbox" id="takeBreak">&#160;
               take a break, every
@@ -149,18 +145,44 @@
               <input type="text" id="breakFrequency" style="width: 50px" value="5" /> minutes each
               <input id="saveBreakData" type="button" name="saveBreak" value="Save">
           </p>
+          <div class="container">
+            <div class="option takeBreak">
           <p>
             <input type="checkbox" id="determinationMode">&#160;
+            <font color="red">
                 Determination Mode (You cannot access any tabs during breaks!)
+              </font>
           </p>
-        </li>
+        </div>
+      </div>
+        </div>
 
-        <li class="option drinkWater">
+        <div class="option drinkWater">
         <p>
             <input type="checkbox" id="drinkWater">&#160;
             drink water, every
             <input type="text" id="breakFrequency" style="width: 50px" value="60" /> minutes
         </p>
-      </li>
+      </div>
+      </div>
+
+        <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
+        <div class="container">
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="pills-about-tab">
+              <h3>
+                  About Us
+              </h3>
+              <p>
+                RemindMeow is a Brave Extension developed by Catherine Hu, Christopher Liu, Eric Li, and Sophie Wen at Cal Hacks 5.0.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="tab-pane fade" id="pills-donate" role="tabpanel" aria-labelledby="pills-donate-tab">We don't need donations just yet!</div>
+      </div>
+    </div>
   </body>
 </html>

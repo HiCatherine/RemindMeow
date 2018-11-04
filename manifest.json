@@ -14,6 +14,10 @@
     "scripts": ["background.js"],
     "persistent": false
   },
+  "content_scripts": [ {
+     "css": [ "style.css" ]
+  } ],
   "options_page": "options.html",
-  "permissions": ["activeTab", "storage", "alarms", "notifications", "http://*/*", "https://*/*"]
+  "permissions": ["activeTab", "storage", "alarms", "notifications", "http://*/*", "https://*/*"],
+  "web_accessible_resources": [ "style.css" ]
 }
