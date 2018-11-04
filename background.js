@@ -45,7 +45,6 @@ function startAlarms() {
           body: 'This is water break #' + data["water_number"],
         });
 
-<<<<<<< HEAD
         set({ water_number: data["water_number"] + 1 }, () => {
           get('water_alarm', (data) => {
             chrome.alarms.create("water_alarm", { when: Date.now() + 60 * 1000 * data["water_alarm"] });
@@ -63,10 +62,6 @@ function startAlarms() {
 function install() {
   set(default_options, () => {
     console.log("Stored initial options.");
-=======
-  chrome.alarms.create("test", {
-    when: Date.now() + 3000
->>>>>>> 7d311d8d92e3982b972c0a7d7376320575d9f5df
   });
 
   startAlarms();
