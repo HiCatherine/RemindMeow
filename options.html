@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      button {
-        height: 30px;
-        width: 30px;
-        outline: none;
-        margin: 10px;
-      }
-    </style>
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script src="./popper.min.js"></script>
+    <script src="./bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <title>RemindMeow Settings</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
   <body>
-    <div id="buttonDiv">
-    </div>
-    <div>
-      <p>Choose a time to remind you to sleep.</p>
-    </div>
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <a class="navbar-brand">RemindMeow</a>
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab">settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-about-tab" data-toggle="pill" href="#pills-about" role="tab">about</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-donate-tab" data-toggle="pill" href="#pills-donate" role="tab">donate</a>
+          </li>
+      </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">Settings</div>
+          <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">About</div>
+          <div class="tab-pane fade" id="pills-donate" role="tabpanel" aria-labelledby="pills-donate-tab">Donate</div>
+        </div>
   </body>
-  <script src="options.js"></script>
 </html>
