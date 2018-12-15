@@ -13,24 +13,24 @@ Remind me to...\
 
 To-Do List
 
-- [ ] familiarize with chrome extension development - go to https://developer.chrome.com/extensions/getstarted
+- [x] familiarize with chrome extension development - go to https://developer.chrome.com/extensions/getstarted
 - [x] basic file initialization
-- [ ] name
-- [ ] icon
+- [x] name
+- [x] icon
 - [ ] drop-down window
-- [ ] website-blocking feature
+- [x] website-blocking feature
 - [ ] webpage designs when blocked
-- [ ] setting's page for time, what you want to be reminded of (checkbox format, enter time intervals)
-- [ ] softcore mode: only send reminders, click ok or snooze (pop-ups)
-- [ ] hardcore mode: block entire websites (consult StayFocused)
+- [x] setting's page for time, what you want to be reminded of (checkbox format, enter time intervals)
+- [x] softcore mode: only send reminders, click ok or snooze (pop-ups)
+- [x] hardcore mode: block entire websites (consult StayFocused)
 - [ ] push to chrome extension store
-- [ ] pitch/presentation
+- [x] pitch/presentation
 
 - Adjustable parameters:
-  - [ ] alarm intervals
-  - [ ] hardcore or softcore
-  - [ ] bedtime
-  - [ ] take a break
+  - [x] alarm intervals
+  - [x] hardcore or softcore
+  - [x] bedtime
+  - [x] take a break
   - [ ] eat healthy
   - [ ] custom parameter
   - [ ] icon selection
